@@ -1,5 +1,5 @@
 import { authenticateUserServerSide } from "@/common/functions";
-import { pageTransitionDuration } from "@/common/globalConstants";
+import { useShowHomeEventsList } from "@/common/hooks";
 import { Ctx } from "@/common/types";
 import Calendar from "@/components/Calendar";
 import DateSelector from "@/components/DateSelector";
@@ -7,7 +7,6 @@ import DefaultHead from "@/components/DefaultHead";
 import DividingLine from "@/components/DividingLine";
 import HomePageEventList from "@/components/HomePageEventList";
 import UserEventsPart from "@/components/UserEventsPart";
-import { useEffect, useState } from "react";
 
 export async function getServerSideProps(ctx:Ctx){
    return await authenticateUserServerSide(ctx)
@@ -16,25 +15,7 @@ export async function getServerSideProps(ctx:Ctx){
 const stylesContainer = `flex justify-center`
 
 export default function HomePage(){
-   const [hideEventList, setHideEventList] = useState(true)
-
-   function showOrHideEventList(context:'start'|'resize'){
-      const windowWidth = context === 'resize' ? window.innerWidth : window.innerWidth / 2
-
-      if(windowWidth >= 769){
-         setHideEventList(false)
-      }else{
-         setHideEventList(true)
-      }
-   }
-
-   useEffect(()=>{
-      showOrHideEventList('start')
-
-      window.addEventListener('resize', ()=>{
-         showOrHideEventList('resize')
-      })
-   }, [])
+   const showHomeEventList = useShowHomeEventsList()
 
    return (
       <>
@@ -51,7 +32,7 @@ export default function HomePage(){
             <UserEventsPart/>
          </main>
 
-         {!hideEventList && 
+         {showHomeEventList && 
             <HomePageEventList/>
          }
       </section>

@@ -1,4 +1,3 @@
-import { pageTransitionDuration } from '@/common/globalConstants'
 import {AnimatePresence, motion} from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -29,7 +28,7 @@ export default function AnimatedPage(props:Props){
    }
 
    const transition = {
-      duration: pageTransitionDuration,
+      duration: 0.4,
       ease: 'easeOut'
    }
 

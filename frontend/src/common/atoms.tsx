@@ -9,3 +9,8 @@ export const selectedDateState = atom<Date>({
    key: 'selectedDateState',
    default: new Date()
 })
+
+export const showHomeEventListState = atom<boolean>({
+   key: 'showHomeEventListState',
+   default: false
+})

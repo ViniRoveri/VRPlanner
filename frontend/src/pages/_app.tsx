@@ -6,15 +6,20 @@ import LocalStorageDarkModeController from '@/components/LocalStorageDarkModeCon
 import Router from 'next/router'
 import nProgress from 'nprogress'
 import AnimatedPage from '@/components/AnimatedPage'
+import { useEffect } from 'react'
+import ShowHomeEventsListController from '@/components/ShowHomeEventsListController'
 
-export default function App({ Component, pageProps }: AppProps) {
-	Router.events.on('routeChangeStart', nProgress.start)
-	Router.events.on('routeChangeComplete', nProgress.done)
-	Router.events.on('routeChangeError', nProgress.done)
-
+export default function App({ Component, pageProps }: AppProps){
+	useEffect(()=>{
+		Router.events.on('routeChangeStart', nProgress.start)
+		Router.events.on('routeChangeComplete', nProgress.done)
+		Router.events.on('routeChangeError', nProgress.done)
+	}, [])
+	
 	return (
 		<RecoilRoot>
-			<LocalStorageDarkModeController />
+			<LocalStorageDarkModeController/>
+			<ShowHomeEventsListController/>
 
 			<HeaderAndFooter>
 				<AnimatedPage>

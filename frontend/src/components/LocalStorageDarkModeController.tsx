@@ -29,7 +29,6 @@ export default function LocalStorageDarkModeController() {
    }, [isDarkMode])
 
    return (
-      <>
-      </>
+      <></>
    )
 }

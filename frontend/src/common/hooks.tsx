@@ -1,5 +1,5 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { isDarkModeState, selectedDateState } from "./atoms";
+import { isDarkModeState, selectedDateState, showHomeEventListState } from "./atoms";
 
 export function useIsDarkMode(){
    const isDarkMode = useRecoilValue(isDarkModeState)
@@ -11,6 +11,12 @@ export function useSelectedDate(){
    const selectedDate = useRecoilValue(selectedDateState)
 
    return selectedDate
+}
+
+export function useShowHomeEventsList(){
+   const showHomeEventList = useRecoilValue(showHomeEventListState)
+
+   return showHomeEventList
 }
 
 export function useSetIsDarkMode(){
@@ -28,5 +34,13 @@ export function useSetSelectedDate(){
       const newSelectedDate = new Date(year, monthIndex, day)
 
       setSelectedDate(newSelectedDate)
+   }
+}
+
+export function useSetShowHomeEventsList(){
+   const setShowHomeEventsList = useSetRecoilState(showHomeEventListState)
+
+   return (newBoolean:boolean)=>{
+      setShowHomeEventsList(newBoolean)
    }
 }
