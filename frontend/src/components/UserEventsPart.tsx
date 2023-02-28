@@ -1,5 +1,5 @@
 import { loadingEvent } from "@/common/globalConstants";
-import { useSelectedDate } from "@/common/hooks";
+import { useSelectedDate, useShowHomeEventsList } from "@/common/hooks";
 import { UserEvent } from "@/common/types";
 import eventsServices from "@/services/eventsServices";
 import { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ import MonthEvents from "./UserEventsParts/MonthEvents";
 const dividingLineHeight = '36px'
 
 export default function UserEventsPart(){
+   const showHomeEventList = useShowHomeEventsList()
    const selectedDate = useSelectedDate()
 
    const selectedMonth = selectedDate.getMonth()
@@ -50,7 +51,9 @@ export default function UserEventsPart(){
 
          <MonthEvents allMonthEvents={allMonthEvents}/>
 
-         <SeeAllEventsButton/>
+         {!showHomeEventList &&
+            <SeeAllEventsButton/>
+         }
       </section>
    )
 }
