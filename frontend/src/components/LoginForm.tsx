@@ -46,7 +46,7 @@ export default function LoginForm(){
             const userPassword = userInfo.password
 
             if(password === userPassword){
-               setLoadingScreenMessage('Loging you in...')
+               setLoadingScreenMessage('Logging you in...')
                
                await usersServices.loginUser(username)
                .then(()=>{

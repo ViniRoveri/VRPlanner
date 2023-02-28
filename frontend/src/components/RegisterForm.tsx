@@ -43,7 +43,7 @@ export default function RegisterForm(){
             
             await usersServices.createUser(username, password)
             .then(async()=>{
-               setLoadingScreenMessage('Loging you in...')
+               setLoadingScreenMessage('Logging you in...')
                
                await usersServices.loginUser(username)
             })
