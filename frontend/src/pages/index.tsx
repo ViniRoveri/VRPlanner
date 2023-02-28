@@ -18,8 +18,8 @@ const stylesContainer = `flex justify-center`
 export default function HomePage(){
    const [hideEventList, setHideEventList] = useState(true)
 
-   function showOrHideEventList(){
-      const windowWidth = window.innerWidth
+   function showOrHideEventList(context:'start'|'resize'){
+      const windowWidth = context === 'resize' ? window.innerWidth : window.innerWidth / 2
 
       if(windowWidth >= 769){
          setHideEventList(false)
@@ -29,13 +29,11 @@ export default function HomePage(){
    }
 
    useEffect(()=>{
-      showOrHideEventList()
+      showOrHideEventList('start')
 
-      setTimeout(()=>{
-         showOrHideEventList()
-      }, (pageTransitionDuration + 0.1) * 1000)
-
-      window.addEventListener('resize', showOrHideEventList)
+      window.addEventListener('resize', ()=>{
+         showOrHideEventList('resize')
+      })
    }, [])
 
    return (

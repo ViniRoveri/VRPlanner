@@ -114,9 +114,7 @@ const eventsServices = {
          return eventDay === selectedDay
       })
 
-      const sortedDayEvents = this.sortEventArray(selectedDayEvents)
-
-      return sortedDayEvents
+      return selectedDayEvents
    },
 
    async getAllSelectedMonthEvents(selectedDate:Date){
