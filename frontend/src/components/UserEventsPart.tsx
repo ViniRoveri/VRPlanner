@@ -13,6 +13,7 @@ export default function UserEventsPart(){
    const selectedDate = useSelectedDate()
 
    const selectedMonth = selectedDate.getMonth()
+   const selectedYear = selectedDate.getFullYear()
 
    const [allDayEvents, setAllDayEvents] = useState<UserEvent[]>([loadingEvent])
    const [allMonthEvents, setAllMonthEvents] = useState<UserEvent[]>([loadingEvent])
@@ -33,7 +34,7 @@ export default function UserEventsPart(){
       setAllMonthEvents([loadingEvent])
       
       updateSelectedMonthEvents()
-   }, [selectedMonth])
+   }, [selectedMonth, selectedYear])
 
    useEffect(()=>{
       if(allMonthEvents[0] !== loadingEvent){

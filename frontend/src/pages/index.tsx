@@ -1,4 +1,5 @@
 import { authenticateUserServerSide } from "@/common/functions";
+import { pageTransitionDuration } from "@/common/globalConstants";
 import { Ctx } from "@/common/types";
 import Calendar from "@/components/Calendar";
 import DateSelector from "@/components/DateSelector";
@@ -29,6 +30,10 @@ export default function HomePage(){
 
    useEffect(()=>{
       showOrHideEventList()
+
+      setTimeout(()=>{
+         showOrHideEventList()
+      }, (pageTransitionDuration + 0.1) * 1000)
 
       window.addEventListener('resize', showOrHideEventList)
    }, [])

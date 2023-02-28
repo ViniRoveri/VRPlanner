@@ -74,6 +74,8 @@ export const months = [
    'December',
 ]
 
+export const pageTransitionDuration = 0.4
+
 export const weekDays = [
    'Sun',
    'Mon',
