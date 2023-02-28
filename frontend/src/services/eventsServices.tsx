@@ -121,14 +121,18 @@ const eventsServices = {
 
    async getAllSelectedMonthEvents(selectedDate:Date){
       const selectedMonthIndex = selectedDate.getMonth()
+      const selectedYear = selectedDate.getFullYear()
 
       const allUserEvents:UserEvent[] = await this.getAllUserEvents()
 
       const selectedMonthEvents = allUserEvents.filter(event=>{
          const eventDate = new Date(event.date)
          const eventMonthIndex = eventDate.getMonth()
+         const eventYear = eventDate.getFullYear()
 
-         return eventMonthIndex === selectedMonthIndex && !event.repeatMonthly
+         return eventMonthIndex === selectedMonthIndex 
+         && selectedYear === eventYear 
+         && !event.repeatMonthly
       })
 
       const allRepeatEvents = this.getAllRepeatEvents(allUserEvents)
