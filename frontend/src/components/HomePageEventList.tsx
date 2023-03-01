@@ -17,7 +17,7 @@ export default function HomePageEventList(){
             <YearSelector/>
          </div>
 
-         <UserEventsList/>
+         <UserEventsList isHomePage/>
       </section>
    )
 }

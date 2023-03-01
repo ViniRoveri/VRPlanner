@@ -6,11 +6,13 @@ type Props = {
    monthIndex: number
 }
 
+const stylesUl = `block`
+
 export default function MonthEventsList(props:Props){
    const monthDisplay = props.monthIndex + 1
 
    return (
-      <ul>
+      <ul className={stylesUl}>
          {props.allMonthEvents.map(event=>{
             return(
                <EventCard event={event} key={event._id} monthDisplay={event.repeatMonthly ? monthDisplay : undefined} scope={'month'}/>
