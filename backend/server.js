@@ -15,9 +15,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 const corsOptions = {
-   credentials: true,
    optionsSuccessStatus: 200,
-   origin: true
+   origin: 'https://vrplanner.vercel.app'
 }
 app.use(cors(corsOptions))
 app.options('*', cors(corsOptions))
