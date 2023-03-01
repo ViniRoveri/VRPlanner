@@ -36,7 +36,8 @@ export const loadingEvent = {
    color: '',
    date: '',
    name: 'Loading...',
-   repeatMonthly: false
+   repeatMonthly: false,
+   repeatYearly: false
 }
 
 export const markerColors:{[key:string]:string} = {
