@@ -5,9 +5,20 @@ export const isDarkModeState = atom<boolean>({
    default: false
 })
 
+function getSelectedDateDefault(){
+   const today = new Date()
+
+   const year = today.getFullYear()
+   const month = today.getMonth()
+   const day = today.getDate()
+
+   const selectedDateDefault = new Date(year, month, day)
+
+   return selectedDateDefault
+}
 export const selectedDateState = atom<Date>({
    key: 'selectedDateState',
-   default: new Date()
+   default: getSelectedDateDefault()
 })
 
 export const showHomeEventListState = atom<boolean>({
