@@ -3,7 +3,7 @@ import { useSelectedDate } from "@/common/hooks"
 import eventsServices from "@/services/eventsServices"
 import validationServices from "@/services/validationServices"
 import { useRouter } from "next/router"
-import { useRef, useState, FormEvent } from "react"
+import { useRef, useState, FormEvent, useEffect } from "react"
 import FormCheckbox from "../FormCheckbox"
 import EventNameInputErrorElement from "../InputErrorElements/EventNameInputErrorElement"
 import LoadingScreen from "../LoadingScreen"
@@ -21,6 +21,7 @@ export default function AddEventForm(){
    const [eventNameInputError, setEventNameInputError] = useState(<></>)
    const [isLoading, setIsLoading] = useState(false)
    const [repeatMonthly, setRepeatMonthly] = useState(false)
+   const [repeatYearly, setRepeatYearly] = useState(false)
    const [selectedColor, setSelectedColor] = useState('red')
 
    async function addEvent(){
@@ -67,7 +68,8 @@ export default function AddEventForm(){
             color: selectedColor,
             date: eventDate,
             name: eventName,
-            repeatMonthly: repeatMonthly
+            repeatMonthly: repeatMonthly,
+            repeatYearly: repeatYearly
          }
 
          return newEvent
@@ -118,6 +120,18 @@ export default function AddEventForm(){
       }
    }
 
+   useEffect(()=>{
+      if(repeatMonthly){
+         setRepeatYearly(false)
+      }
+   }, [repeatMonthly])
+
+   useEffect(()=>{
+      if(repeatYearly){
+         setRepeatMonthly(false)
+      }
+   }, [repeatYearly])
+
    return (
       <section className={formStyles.container}>
          <form className={formStyles.form} onSubmit={handleSubmit}>
@@ -142,6 +156,8 @@ export default function AddEventForm(){
             <MarkerColorSelector selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
             
             <FormCheckbox message={'Repeat every month'} state={repeatMonthly} setState={setRepeatMonthly}/>
+
+            <FormCheckbox message={'Repeat every year'} state={repeatYearly} setState={setRepeatYearly}/>
 
             <button className={formStyles.button} type="submit">Add</button>
          </form>

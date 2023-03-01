@@ -30,6 +30,7 @@ export default function EditEventForm(props:Props){
    const [eventTimeInputValue, setEventTimeInputValue] = useState('')
    const [isLoading, setIsLoading] = useState(false)
    const [repeatMonthly, setRepeatMonthly] = useState(false)
+   const [repeatYearly, setRepeatYearly] = useState(false)
    const [selectedColor, setSelectedColor] = useState('red')
 
    async function editEvent(){
@@ -78,7 +79,8 @@ export default function EditEventForm(props:Props){
          color: selectedColor,
          date: eventDate,
          name: eventName,
-         repeatMonthly: repeatMonthly
+         repeatMonthly: repeatMonthly,
+         repeatYearly: repeatYearly
       }
 
       return editedEvent
@@ -146,6 +148,18 @@ export default function EditEventForm(props:Props){
          setSelectedColor(props.selectedEvent.color)
       }
    }, [props.selectedEvent])
+
+   useEffect(()=>{
+      if(repeatMonthly){
+         setRepeatYearly(false)
+      }
+   }, [repeatMonthly])
+   
+   useEffect(()=>{
+      if(repeatYearly){
+         setRepeatMonthly(false)
+      }
+   }, [repeatYearly])
    
    return (
       <section className={formStyles.container}>
@@ -171,6 +185,8 @@ export default function EditEventForm(props:Props){
             <MarkerColorSelector selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
             
             <FormCheckbox message={'Repeat every month'} state={repeatMonthly} setState={setRepeatMonthly}/>
+            
+            <FormCheckbox message={'Repeat every year'} state={repeatYearly} setState={setRepeatYearly}/>
 
             <button className={formStyles.button} type="submit">Edit</button>
          </form>

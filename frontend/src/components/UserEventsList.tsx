@@ -42,7 +42,7 @@ export default function UserEventsList({isHomePage}:Props){
    }
 
    async function updateAllRepeatEvents(){
-      const allRepeatEvents = eventsServices.getAllRepeatEvents(allUserEvents)
+      const allRepeatEvents = eventsServices.getAllRepeatMonthlyEvents(allUserEvents)
 
       setAllRepeatEvents(allRepeatEvents)
    }

@@ -56,10 +56,16 @@ const eventsServices = {
       )
    },
 
-   getAllRepeatEvents(allUserEvents:UserEvent[]){
-      const allRepeatEvents = allUserEvents.filter(event=> event.repeatMonthly)
+   getAllRepeatMonthlyEvents(allUserEvents:UserEvent[]){
+      const allRepeatMonthlyEvents = allUserEvents.filter(event=> event.repeatMonthly)
 
-      return allRepeatEvents
+      return allRepeatMonthlyEvents
+   },
+   
+   getAllRepeatYearlyEvents(allUserEvents:UserEvent[]){
+      const allRepeatYearlyEvents = allUserEvents.filter(event=> event.repeatMonthly)
+
+      return allRepeatYearlyEvents
    },
 
    async getAllUserEvents(){
@@ -133,7 +139,7 @@ const eventsServices = {
          && !event.repeatMonthly
       })
 
-      const allRepeatEvents = this.getAllRepeatEvents(allUserEvents)
+      const allRepeatEvents = this.getAllRepeatMonthlyEvents(allUserEvents)
 
       const allMonthEvents = [...selectedMonthEvents, ...allRepeatEvents]
 
