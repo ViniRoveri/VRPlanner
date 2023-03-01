@@ -63,7 +63,7 @@ const eventsServices = {
    },
    
    getAllRepeatYearlyEvents(allUserEvents:UserEvent[]){
-      const allRepeatYearlyEvents = allUserEvents.filter(event=> event.repeatMonthly)
+      const allRepeatYearlyEvents = allUserEvents.filter(event=> event.repeatYearly)
 
       return allRepeatYearlyEvents
    },
@@ -137,11 +137,24 @@ const eventsServices = {
          return eventMonthIndex === selectedMonthIndex 
          && selectedYear === eventYear 
          && !event.repeatMonthly
+         && !event.repeatYearly
       })
 
-      const allRepeatEvents = this.getAllRepeatMonthlyEvents(allUserEvents)
+      const allRepeatMonthlyEvents = this.getAllRepeatMonthlyEvents(allUserEvents)
 
-      const allMonthEvents = [...selectedMonthEvents, ...allRepeatEvents]
+      const allRepeatYearlyEvents = this.getAllRepeatYearlyEvents(allUserEvents)
+      const selectedMonthRepeatYearlyEvents = allRepeatYearlyEvents.filter(event=>{
+         const eventDate = new Date(event.date)
+         const eventMonthIndex = eventDate.getMonth()
+
+         return eventMonthIndex === selectedMonthIndex
+      })
+
+      const allMonthEvents = [
+         ...selectedMonthEvents, 
+         ...allRepeatMonthlyEvents, 
+         ...selectedMonthRepeatYearlyEvents
+      ]
 
       const sortedMonthEvents = this.sortEventArray(allMonthEvents)
 
@@ -155,10 +168,19 @@ const eventsServices = {
          const eventDate = new Date(event.date)
          const eventYear = eventDate.getFullYear()
 
-         return eventYear === selectedYear && !event.repeatMonthly
+         return eventYear === selectedYear 
+         && !event.repeatMonthly
+         && !event.repeatYearly
       })
 
-      const sortedYearEvents = this.sortEventArray(selectedYearEvents)
+      const repeatYearlyEvents = allUserEvents.filter(event=> event.repeatYearly)
+
+      const allYearEvents = [
+         ...selectedYearEvents,
+         ...repeatYearlyEvents
+      ]
+
+      const sortedYearEvents = this.sortEventArray(allYearEvents)
 
       return sortedYearEvents
    },

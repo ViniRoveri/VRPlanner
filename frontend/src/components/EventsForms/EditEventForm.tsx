@@ -144,6 +144,8 @@ export default function EditEventForm(props:Props){
          setEventTimeInputValue(startingEventTimeInput)
 
          setRepeatMonthly(props.selectedEvent.repeatMonthly)
+         
+         setRepeatYearly(props.selectedEvent.repeatYearly)
 
          setSelectedColor(props.selectedEvent.color)
       }

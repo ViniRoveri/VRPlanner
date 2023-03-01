@@ -1,7 +1,7 @@
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 
-const stylesButton = `border bottom-8 fixed flex items-center justify-start left-[16%] pl-2 pr-8 py-1 rounded-xl text-[30px] -translate-x-[50%]`
+const stylesButton = `border bottom-8 cursor-pointer fixed flex items-center justify-start left-[16%] pl-2 pr-8 py-1 rounded-xl text-[30px] -translate-x-[50%]`
 const stylesIcon = `h-14 mr-4 w-14`
 
 export default function GoToTopButton(){

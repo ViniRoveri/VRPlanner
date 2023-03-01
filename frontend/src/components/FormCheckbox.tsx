@@ -7,8 +7,8 @@ type Props = {
    setState: Dispatch<SetStateAction<boolean>>
 }
 
-const stylesContainer = `border-b flex items-center justify-start mt-1 w-full` 
-const stylesCheckbox = `border cursor-pointer flex h-5 inline-block items-center justify-center mr-4 text-[20px] w-5
+const stylesContainer = `border-b cursor-pointer flex items-center justify-start mt-1 w-full` 
+const stylesCheckbox = `border flex h-5 inline-block items-center justify-center mr-4 text-[20px] w-5
 sm:text-[24px]
 md:text-[28px]`
 const stylesP = `inline-block`

@@ -12,4 +12,5 @@ export type UserEvent = {
    date: Date | string
    name: string
    repeatMonthly: boolean
+   repeatYearly: boolean
 }
