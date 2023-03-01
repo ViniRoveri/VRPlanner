@@ -16,7 +16,8 @@ const stylesIcon = `absolute cursor-pointer flex items-center justify-center h-5
 sm:h-6 sm:w-6
 md:h-7 md:w-7`
 const stylesOptions = `absolute border-y max-h-[calc(39px*4.5)] overflow-y-auto text-center w-full z-10
-sm:max-h-none`
+sm:max-h-[calc(45px*4.5)]
+md:max-h-[calc(51px*4.5)]`
 const stylesOption = `border bg-default-beige capitalize cursor-pointer py-0.5 text-[22px] w-full
 dark:bg-default-darkBrown
 last:rounded-b-lg
@@ -30,6 +31,7 @@ export default function MarkerColorSelector(props:Props){
    const options = useRef<HTMLUListElement>(null)
 
    const [optionsAreOpen, setOptionsAreOpen] = useState(false)
+   const [selectorRoundedBorders, setSelectorRoundedBorders] = useState('')
 
    function handleColorClick(newColor:string){
       props.setSelectedColor(newColor)
@@ -45,12 +47,20 @@ export default function MarkerColorSelector(props:Props){
 
          options.current.scroll(0, (optionHeight - 2) * selectedColorIndex)
       }
+
+      if(optionsAreOpen){
+         setSelectorRoundedBorders('!rounded-b-none')
+      }else{
+         setSelectorRoundedBorders('')
+      }
    }, [optionsAreOpen])
 
    return (
       <fieldset className={formStyles.fieldset} onBlur={()=>setOptionsAreOpen(false)} tabIndex={0}>
          <div className={stylesContainerSelected} onClick={()=> setOptionsAreOpen(!optionsAreOpen)}>
-            <h3 className={`${formStyles.input} capitalize`}>
+            <h3 className={
+               `${formStyles.input} ${selectorRoundedBorders} capitalize`
+            }>
                <span className={stylesColorCircle} style={{backgroundColor: markerColors[props.selectedColor]}}/>
 
                {props.selectedColor}

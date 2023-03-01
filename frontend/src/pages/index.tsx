@@ -5,6 +5,7 @@ import Calendar from "@/components/Calendar";
 import DateSelector from "@/components/DateSelector";
 import DefaultHead from "@/components/DefaultHead";
 import DividingLine from "@/components/DividingLine";
+import GoToTopButton from "@/components/GoToTopButton";
 import HomePageEventList from "@/components/HomePageEventList";
 import UserEventsPart from "@/components/UserEventsPart";
 
@@ -33,7 +34,11 @@ export default function HomePage(){
          </main>
 
          {showHomeEventList && 
+         <>
             <HomePageEventList/>
+
+            <GoToTopButton/>
+         </>
          }
       </section>
       </>
