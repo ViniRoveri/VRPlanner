@@ -10,7 +10,7 @@
    color: #205295;
    font-family: 'Patrick Hand SC', cursive;
    outline: none;
-   scrollbar-color: var(--orange) var(--darkOrange);
+   scrollbar-color: #205295 #E1D7C6;
    scrollbar-width: 10px;
    text-decoration: none;
    transition-duration: .16s;
@@ -19,6 +19,7 @@
 .dark *{
    border-color: #E1D7C6;
    color: #E1D7C6;
+   scrollbar-color: #E1D7C6 #1A120B;
 }
 
 main{
@@ -47,22 +48,22 @@ input:not(:focus):invalid::-webkit-datetime-edit {
    background: #E1D7C6;
 }
 
-.dark *::-webkit-scrollbar-track{
-   background: #1A120B;
-}
-
 ::-webkit-scrollbar-thumb{
    background: #205295;
    border-radius: 4px;
 }
 
+::-webkit-scrollbar-thumb:hover{
+   background: #0e2542;
+}
+
+.dark *::-webkit-scrollbar-track{
+   background: #1A120B;
+}
+
 .dark *::-webkit-scrollbar-thumb{
    background: #E1D7C6;
    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-   background: #0e2542;
 }
 
 .dark *::-webkit-scrollbar-thumb:hover{
