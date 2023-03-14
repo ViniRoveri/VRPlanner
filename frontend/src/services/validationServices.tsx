@@ -1,11 +1,11 @@
 const validationServices = {
    validateEventNameInput(eventName:string){
-      const nameIsLongerThan30 = eventName.length > 30
+      const nameIsLongerThan35 = eventName.length > 35
 
-      if(nameIsLongerThan30){
+      if(nameIsLongerThan35){
          return {
             ok: false,
-            message: "The event name length should be shorter than 30"
+            message: "The event name length should be shorter than 35"
          }
       }
 
